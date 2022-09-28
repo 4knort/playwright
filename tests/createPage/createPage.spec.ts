@@ -6,11 +6,6 @@ const wait = (ms) => {
 
 test.describe("новый пользователь открывает страницу create", () => {
   test.beforeEach(async ({ page }) => {
-
-
-
-
-
     await page.goto("https://4knort.github.io/colorizr");
   });
 
