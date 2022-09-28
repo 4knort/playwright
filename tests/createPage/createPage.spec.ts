@@ -1,11 +1,15 @@
 import { test, expect } from "@playwright/test";
 
-const wait = (ms: number) => {
+const wait = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 test.describe("новый пользователь открывает страницу create", () => {
   test.beforeEach(async ({ page }) => {
+
+
+
+
     await page.goto("https://4knort.github.io/colorizr");
   });
 
