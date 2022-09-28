@@ -226,7 +226,7 @@ test.describe("новый пользователь открывает стран
         .hover();
     });
 
-    test.only(`видит что появился крестик`, async ({ page }) => {
+    test(`видит что появился крестик`, async ({ page }) => {
       const span = await page.locator(
         "div:nth-child(3) > .panel__colors > div > .panel__color-icon >> nth=0"
       );
