@@ -10,6 +10,7 @@ test.describe("новый пользователь открывает стран
 
 
 
+
     await page.goto("https://4knort.github.io/colorizr");
   });
 
