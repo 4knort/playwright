@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@reportportal/agent-js-playwright": "^5.0.8",
     "prettier": "^2.7.1"
   },
   "dependencies": {
