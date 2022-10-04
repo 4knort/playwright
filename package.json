@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "npx playwright test"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@reportportal/agent-js-playwright": "^5.0.8",
     "prettier": "^2.7.1"
   },
   "dependencies": {
