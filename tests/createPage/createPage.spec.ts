@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
 
+const wait = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
 test.describe("новый пользователь открывает страницу create", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://4knort.github.io/colorizr");
@@ -114,7 +118,7 @@ test.describe("новый пользователь открывает стран
       const btn = await page.locator(".panel__btn >> nth=0");
 
       await btn.click();
-      await page.waitForTimeout(1000); // color changes to slow, playwright is too fast
+      await wait(1000); // color changes to slow, playwright is too fast
     });
 
     test(`в панеле выбора цветов все элементы окрасились соответствуя цветам в панеле темных цветов`, async ({
@@ -150,7 +154,7 @@ test.describe("новый пользователь открывает стран
           "div:nth-child(4) > .panel__colors > div:nth-child(2)"
         );
         await itemColor.click();
-        await page.waitForTimeout(1000); // color changes to slow, playwright is too fast
+        await wait(1000); // color changes to slow, playwright is too fast
       });
       test(" видит что последний элемент в панеле выбора цвета окрасился в тот же цвет", async ({
         page,
@@ -184,12 +188,11 @@ test.describe("новый пользователь открывает стран
       const btn = await page.locator(".panel__btn >> nth=1");
 
       await btn.click();
-      await page.waitForTimeout(1000); // color changes to slow, playwright is too fast
+      await wait(1000); // color changes to slow, playwright is too fast
     });
     test(`в панеле выбора цветов все элементы окрасились соответствуя цветам в панеле смешанных цветов`, async ({
       page,
     }) => {
-      let allColorsAreEqual = false;
       const itemsChoose = await page.locator(".panel__color-item--choose");
       const itemsColor = await page.locator(
         ".panel__colors >> nth=0 >> .panel__color-item"
@@ -209,13 +212,9 @@ test.describe("новый пользователь открывает стран
             .getComputedStyle(element)
             .getPropertyValue("background-color");
         });
-        if (bgChooseItem === bgColorItem) {
-          allColorsAreEqual = true;
-        } else {
-          allColorsAreEqual = false;
-        }
+
+        await expect(bgChooseItem).toEqual(bgColorItem);
       }
-      await expect(allColorsAreEqual).toBe(true);
     });
   });
 
@@ -240,7 +239,6 @@ test.describe("новый пользователь открывает стран
           .locator("div:nth-child(3) > .panel__colors > div")
           .last()
           .hover();
-        //hello
       });
       test("видит что крестика нет", async ({ page }) => {
         const span = await page.locator(
@@ -286,7 +284,7 @@ test.describe("новый пользователь открывает стран
         .locator("div:nth-child(3) > .panel__colors > div")
         .first()
         .click();
-      await page.waitForTimeout(1000); // color changes to slow, playwright is too fast
+      await wait(1000); // color changes to slow, playwright is too fast
     });
 
     test(`видит что первый элемент в панеле выбора цветов окрасился в тот же цвет`, async ({

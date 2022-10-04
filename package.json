@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "test": "npx playwright test"
+    "type-check": "tsc --noEmit"
   },
   "author": "",
   "license": "ISC",
